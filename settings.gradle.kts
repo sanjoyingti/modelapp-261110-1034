@@ -10,7 +10,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        // REMOVED: maven("https://jitpack.io") - WireGuard now on Maven Central
+        maven("https://git.zx2c4.com/wireguard-android/maven/")
     }
 }
 rootProject.name = "ModelApp"
