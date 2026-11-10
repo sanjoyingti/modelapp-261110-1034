@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Ninja VPN</string>
+    <string name="app_name_short">Ninja VPN</string>
+    
+    <!-- REMOVED: admob_app_id -->
+    <!-- REMOVED: ad_unit_id_banner, ad_unit_id_interstitial -->
+    <!-- REMOVED: firebase_analytics_collection_enabled -->
+</resources>
