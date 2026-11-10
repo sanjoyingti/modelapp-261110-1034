@@ -10,12 +10,12 @@ plugins {
 
 android {
     namespace = "com.ninjavpn"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.ninjavpn"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1413
         versionName = "1.4.13-free"
         vectorDrawables.useSupportLibrary = true
@@ -60,13 +60,17 @@ android {
     kotlinOptions {
         jvmTarget = "17"
         freeCompilerArgs += listOf(
-            "-Xopt-in=kotlin.RequiresOptIn",
-            "-P", "plugin:kotlinx-serialization:classSerializers=explicit"
+            "-Xopt-in=kotlin.RequiresOptIn"
         )
     }
 
     packagingOptions {
         resources.excludes += "META-INF/*.kotlin_module"
+        resources.excludes += "META-INF/DEPENDENCIES"
+        resources.excludes += "META-INF/LICENSE"
+        resources.excludes += "META-INF/LICENSE.txt"
+        resources.excludes += "META-INF/NOTICE"
+        resources.excludes += "META-INF/NOTICE.txt"
     }
 }
 
@@ -98,14 +102,13 @@ dependencies {
     // WorkManager
     implementation(libs.work.runtime.ktx)
 
-    // DataStore Preferences (RxJava3 for Flowable/Single API used in PreferencesRepository)
-    implementation(libs.datastore.preferences.rxjava3)
-    implementation(libs.rxjava)
+    // DataStore Preferences
+    implementation(libs.datastore.preferences)
 
-    // WireGuard Go Backend (from Maven Central)
+    // WireGuard Go Backend
     implementation(libs.wireguard.android)
 
-    // Core library desugaring for Java 8+ APIs (required by WireGuard tunnel library)
+    // Core library desugaring for Java 8+ APIs
     coreLibraryDesugaring(libs.core.library.desugaring)
 
     // Serialization
@@ -114,6 +117,6 @@ dependencies {
     // Timber Logging
     implementation(libs.timber)
 
-    // Coil Image Loading (for country flags if needed)
+    // Coil Image Loading
     implementation(libs.coil.compose)
 }

@@ -5,9 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.VpnService
 import android.os.Build
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
-import androidx.lifecycle.LifecycleOwner
 import com.ninjavpn.domain.model.Server
 import com.ninjavpn.domain.model.VpnState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,6 +20,10 @@ class VpnManager @Inject constructor(
     val state: StateFlow<VpnState> = _state
 
     private var pendingIntent: Intent? = null
+
+    init {
+        instance = this
+    }
 
     fun prepareVpn(activity: Activity, requestCode: Int): Boolean {
         val intent = VpnService.prepare(context)
@@ -68,5 +69,8 @@ class VpnManager @Inject constructor(
 
     companion object {
         const val REQUEST_VPN_PERMISSION = 0x100
+        private var instance: VpnManager? = null
+        
+        fun getInstance(): VpnManager? = instance
     }
 }

@@ -2,19 +2,20 @@ package com.ninjavpn.ui.screen.settings
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.verticalArrangement
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForwardIos
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Divider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsStateWithLifecycle
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -29,7 +30,10 @@ fun SettingsScreen(viewModel: SettingsViewModel = viewModel()) {
     val autoConnect by viewModel.autoConnect.collectAsStateWithLifecycle()
     val protocol by viewModel.protocol.collectAsStateWithLifecycle()
 
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+    Column(
+        modifier = Modifier.fillMaxWidth().padding(16.dp),
+        verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(8.dp)
+    ) {
         Text("SETTINGS", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = NinjaVpnTheme.colorScheme.primary)
         Divider(modifier = Modifier.padding(vertical = 16.dp))
 
@@ -56,7 +60,7 @@ fun SettingsScreen(viewModel: SettingsViewModel = viewModel()) {
             title = "Custom DNS",
             subtitle = "Override DNS servers (optional)",
             trailing = { 
-                androidx.compose.material.Icon(
+                Icon(
                     imageVector = Icons.Filled.ArrowForwardIos,
                     tint = NinjaVpnTheme.colorScheme.onSurfaceVariant
                 )
@@ -67,22 +71,10 @@ fun SettingsScreen(viewModel: SettingsViewModel = viewModel()) {
         Divider(modifier = Modifier.padding(vertical = 16.dp))
 
         SettingsRow(
-            title = "Speed Test",
-            subtitle = "Measure VPN performance",
-            trailing = { 
-                androidx.compose.material.Icon(
-                    imageVector = Icons.Filled.ArrowForwardIos,
-                    tint = NinjaVpnTheme.colorScheme.onSurfaceVariant
-                )
-            },
-            onClick = { /* navigate */ }
-        )
-
-        SettingsRow(
             title = "Clear Server Cache",
             subtitle = "Force refresh server list from built-in config",
             trailing = { 
-                androidx.compose.material.Icon(
+                Icon(
                     imageVector = Icons.Filled.Refresh,
                     tint = NinjaVpnTheme.colorScheme.onSurfaceVariant
                 )
@@ -96,7 +88,7 @@ fun SettingsScreen(viewModel: SettingsViewModel = viewModel()) {
             title = "About",
             subtitle = "Version 1.4.13-free • WireGuard® • Open Source",
             trailing = { 
-                androidx.compose.material.Icon(
+                Icon(
                     imageVector = Icons.Filled.Info,
                     tint = NinjaVpnTheme.colorScheme.onSurfaceVariant
                 )

@@ -2,7 +2,7 @@ package com.ninjavpn.data.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.ninjavpn.domain.model.Server
+import com.ninjavpn.domain.model.ServerEntity
 import com.ninjavpn.domain.model.TrafficLog
 import com.ninjavpn.domain.model.SubscriptionEntitlementEntity
 
