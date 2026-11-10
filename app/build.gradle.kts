@@ -52,6 +52,7 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+        coreLibraryDesugaringEnabled = true
     }
 
     kotlinOptions {
@@ -102,8 +103,11 @@ dependencies {
     // DataStore Preferences
     implementation(libs.datastore.preferences)
 
-    // WireGuard Go Backend
+    // WireGuard Go Backend (from Maven Central)
     implementation(libs.wireguard.android)
+
+    // Core library desugaring for Java 8+ APIs (required by WireGuard tunnel library)
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
 
     // Serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1")
