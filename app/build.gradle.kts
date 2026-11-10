@@ -5,6 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization")
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -99,7 +100,7 @@ dependencies {
 
     // DataStore Preferences (RxJava3 for Flowable/Single API used in PreferencesRepository)
     implementation(libs.datastore.preferences.rxjava3)
-    implementation("io.reactivex.rxjava3:rxjava:3.1.8")
+    implementation(libs.rxjava)
 
     // WireGuard Go Backend (from Maven Central)
     implementation(libs.wireguard.android)
