@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android") version "2.51.1"
     id("kotlinx-serialization")
+    id("kotlin-kapt")
 }
 
 android {
@@ -104,6 +105,4 @@ dependencies {
     // REMOVED: Play Billing, Google Ads, Firebase, Analytics, Crashlytics
 }
 
-kapt {
-    correctErrorTypes = true
-}
+// REMOVED: kapt { correctErrorTypes = true } - deprecated/removed in newer Kotlin versions

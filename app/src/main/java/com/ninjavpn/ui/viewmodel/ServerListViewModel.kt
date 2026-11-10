@@ -22,7 +22,7 @@ class ServerListViewModel @Inject constructor(
         serverRepo.getAllServers(),
         _selectedCountry.distinctUntilChanged()
     ) { allServers, country ->
-        if (country == "All") allServimes
+        if (country == "All") allServers
         else allServers.filter { it.country == country }
     }
 

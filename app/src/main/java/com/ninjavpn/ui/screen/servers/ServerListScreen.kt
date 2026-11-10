@@ -150,9 +150,13 @@ private fun ServerCard(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(4.dp)
                     ) {
-                        androidx.compose.ui.graphics.vector.ImageVector(
-                            "ping",
-                            // simplified ping icon
+                        androidx.compose.material.icons.filled.SignalWifi4Bar(
+                            tint = when {
+                                ping < 100 -> Color.Green
+                                ping < 200 -> Color.Orange
+                                else -> Color.Red
+                            },
+                            modifier = Modifier.size(16.dp)
                         )
                         Text(
                             text = "${ping} ms",
