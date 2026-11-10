@@ -1,8 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.dagger.hilt.android") version "2.51.1"
+    id("org.jetbrains.kotlin.plugin.compose")
     id("kotlinx-serialization")
+    id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
 }
 
@@ -100,25 +101,21 @@ dependencies {
     // WorkManager
     implementation(libs.work.runtime.ktx)
 
-    // DataStore Preferences
-    implementation(libs.datastore.preferences)
+    // DataStore Preferences (RxJava3 for Flowable/Single API used in PreferencesRepository)
+    implementation(libs.datastore.preferences.rxjava3)
 
     // WireGuard Go Backend (from Maven Central)
     implementation(libs.wireguard.android)
 
     // Core library desugaring for Java 8+ APIs (required by WireGuard tunnel library)
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
+    coreLibraryDesugaring(libs.core.library.desugaring)
 
     // Serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1")
+    implementation(libs.kotlinx.serialization.json)
 
     // Timber Logging
-    implementation("com.jakewharton.timber:timber:5.0.1")
+    implementation(libs.timber)
 
     // Coil Image Loading (for country flags if needed)
-    implementation("io.coil-kt:coil-compose:2.7.0")
-
-    // REMOVED: Play Billing, Google Ads, Firebase, Analytics, Crashlytics
+    implementation(libs.coil.compose)
 }
-
-// REMOVED: kapt { correctErrorTypes = true } - deprecated/removed in newer Kotlin versions

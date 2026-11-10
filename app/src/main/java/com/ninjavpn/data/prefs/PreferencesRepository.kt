@@ -4,7 +4,8 @@ import android.content.Context
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.preferencesKey
 import androidx.datastore.preferences.rxjava3.RxDataStore
-import com.google.common.util.concurrent.ListenableFuture
+import androidx.datastore.rxjava3.RxDataStoreBuilder
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
