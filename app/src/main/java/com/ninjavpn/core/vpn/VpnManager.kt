@@ -66,6 +66,6 @@ class VpnManager @Inject constructor(
     }
 
     companion object {
-        const val REQUEST_VPN_PERMISSION = 0xVPN
+        const val REQUEST_VPN_PERMISSION = 0x100
     }
 }
