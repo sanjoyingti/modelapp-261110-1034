@@ -10,6 +10,7 @@ wireguard = "1.0.20230706"
 lifecycle = "2.8.4"
 navigation = "2.8.4"
 core = "1.15.0"
+rxjava = "3.1.8"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core" }
@@ -36,3 +37,4 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 timber = { group = "com.jakewharton.timber", name = "timber", version = "5.0.1" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version = "2.7.0" }
 core-library-desugaring = { group = "com.android.tools", name = "desugar_jdk_libs", version = "2.0.3" }
+rxjava = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }

@@ -2,6 +2,7 @@ package com.ninjavpn.di
 
 import com.ninjavpn.data.repository.ServerRepository
 import com.ninjavpn.domain.repository.ServerRepository as DomainServerRepo
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsStateWithLifecycle
@@ -20,7 +21,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ninjavpn.domain.model.VpnState
 import com.ninjavpn.ui.theme.NinjaVpnTheme
 import com.ninjavpn.ui.viewmodel.ConnectViewModel
-import kotlinx.coroutines.launch
 
 @Composable
 fun ConnectScreen(
@@ -58,7 +58,7 @@ fun ConnectScreen(
                     }
                 },
                 modifier = Modifier.fillMaxSize(),
-                enabled = vpnState !in VpnState.Connecting..VpnState.Disconnecting,
+                enabled = vpnState !is VpnState.Connecting && vpnState !is VpnState.Disconnecting,
             ) {
                 Text(
                     text = when (vpnState) {
@@ -82,8 +82,8 @@ fun ConnectScreen(
         Text(
             text = when (vpnState) {
                 is VpnState.Connected -> "Connected to ${(vpnState as VpnState.Connected).server.name}"
-                is VpnState.Connecting -> "Connecting to ${vpnState.server.name}..."
-                is VpnState.Error -> "Error: ${vpnState.message}"
+                is VpnState.Connecting -> "Connecting to ${(vpnState as VpnState.Connecting).server.name}..."
+                is VpnState.Error -> "Error: ${(vpnState as VpnState.Error).message}"
                 else -> "Tap to connect"
             },
             fontSize = 16.sp,
@@ -92,7 +92,7 @@ fun ConnectScreen(
 
         // Stats
         if (vpnState is VpnState.Connected) {
-            val stats = vpnState.stats
+            val stats = (vpnState as VpnState.Connected).stats
             Text(
                 text = "↑ ${formatSpeed(stats.txSpeed)}  ↓ ${formatSpeed(stats.rxSpeed)}  •  ${formatDuration(stats.durationSeconds)}",
                 fontSize = 14.sp,

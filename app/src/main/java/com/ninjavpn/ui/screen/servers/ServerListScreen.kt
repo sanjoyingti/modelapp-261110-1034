@@ -19,6 +19,8 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ninjavpn.ui.theme.NinjaVpnTheme
 import com.ninjavpn.ui.viewmodel.ServerListViewModel
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.SignalWifi4Bar
 
 @Composable
 fun ServerListScreen(
@@ -150,7 +152,8 @@ private fun ServerCard(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(4.dp)
                     ) {
-                        androidx.compose.material.icons.filled.SignalWifi4Bar(
+                        androidx.compose.material.Icon(
+                            imageVector = Icons.Filled.SignalWifi4Bar,
                             tint = when {
                                 ping < 100 -> Color.Green
                                 ping < 200 -> Color.Orange
@@ -173,19 +176,14 @@ private fun ServerCard(
                 // Obfuscation badge
                 if (server.obfuscation != com.ninjavpn.domain.model.ObfuscationType.NONE) {
                     androidx.compose.material3.Badge(
-                        badgeContent = {
-                            Text(
-                                text = server.obfuscation.name,
-                                fontSize = 10.sp,
-                                fontWeight = FontWeight.Medium,
-                                color = NinjaVpnTheme.colorScheme.onPrimaryContainer
-                            )
-                        },
-                        badgeColors = androidx.compose.material3.BadgeDefaults.badgeColors(
-                            containerColor = NinjaVpnTheme.colorScheme.primaryContainer
-                        )
+                        containerColor = NinjaVpnTheme.colorScheme.primaryContainer
                     ) {
-                        androidx.compose.foundation.layout.Box()
+                        Text(
+                            text = server.obfuscation.name,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Medium,
+                            color = NinjaVpnTheme.colorScheme.onPrimaryContainer
+                        )
                     }
                 }
 

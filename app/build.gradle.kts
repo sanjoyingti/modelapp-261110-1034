@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
-    id("kotlinx-serialization")
+    id("org.jetbrains.kotlin.plugin.serialization")
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
 }
@@ -64,10 +64,6 @@ android {
         )
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = "2.0.20"
-    }
-
     packagingOptions {
         resources.excludes += "META-INF/*.kotlin_module"
     }
@@ -103,6 +99,7 @@ dependencies {
 
     // DataStore Preferences (RxJava3 for Flowable/Single API used in PreferencesRepository)
     implementation(libs.datastore.preferences.rxjava3)
+    implementation("io.reactivex.rxjava3:rxjava:3.1.8")
 
     // WireGuard Go Backend (from Maven Central)
     implementation(libs.wireguard.android)
